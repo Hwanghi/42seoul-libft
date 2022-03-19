@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 22:22:00 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/19 16:42:56 by hehwang          ###   ########.fr       */
+/*   Created: 2022/03/19 19:47:33 by hehwang           #+#    #+#             */
+/*   Updated: 2022/03/19 22:01:39 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+static	void print_nbrs(int n, int fd)
 {
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (dstsize > 0)
+	if (n < 10)
+		ft_putchar_fd(n + '0', fd);
+	else
 	{
-		while (*src != '\0' && dstsize-- > 1)
-			*dst++ = *src++;
-		*dst = '\0';
+		print_nbrs(n / 10, fd);
+		print_nbrs(n % 10, fd);
 	}
-	return (src_len);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		print_nbrs(-1 * n, fd);
+	}
+	else
+		print_nbrs(n, fd);
 }
