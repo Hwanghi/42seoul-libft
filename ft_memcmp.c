@@ -6,20 +6,20 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 21:32:58 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/10 21:46:48 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/17 12:27:28 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*s1_c;
 	unsigned char	*s2_c;
 	size_t			i;
 
-	s1_c = (unsigned char*)s1;
-	s2_c = (unsigned char*)s2;
+	s1_c = (unsigned char *)s1;
+	s2_c = (unsigned char *)s2;
 	i = 0;
 	while (i < n)
 	{

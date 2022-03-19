@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:42:26 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/10 17:43:51 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/17 12:31:16 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_isalnum(int c)
 {
-	if (c < '0' || c > '9' && c < 'A' || c > 'Z' && c < 'a' || c > 'z')
-		return (0);
-	else
+	if (!(c < 'A' || (c > 'Z' && c < 'a') || c > 'z'))
 		return (1);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

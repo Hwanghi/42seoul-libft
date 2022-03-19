@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:44:20 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/14 13:05:44 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/16 15:42:25 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	char	*sp;
 	size_t	r;
 
+	r = 0;
 	while (s[r] != '\0')
 		r++;
 	if ((char)c == '\0')
-		return (&s[r]);
+	{
+		sp = (char *)&s[r];
+		return (sp);
+	}
 	while (r--)
 	{
 		if (s[r] == (char)c)
-			return (&s[r]);
+		{
+			sp = (char *)&s[r];
+			return (sp);
+		}
 	}
 	return (0);
 }

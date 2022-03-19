@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 22:22:27 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/15 22:52:34 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:42:15 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	src_len;
 	size_t	dst_len;
 
-	src_len = 0;
-	while(src[src_len] != '\0')
-		src_len++;
-	dst_len = 0;
+	src_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
 	while (dst[dst_len] != '\0')
 		dst_len++;
 	if (dstsize <= dst_len)

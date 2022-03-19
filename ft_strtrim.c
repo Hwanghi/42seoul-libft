@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:08:17 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/15 20:03:38 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/17 18:45:29 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*dst;
-	char	*trim;
-	size_t	dstsize;
-	size_t	src_len;
+	char	*trim_str;
+	size_t	start;
+	size_t	end;
+	size_t	s_len;
 
-	dstsize = 0;
-	src_len = 0;
-	while (s1[src_len] != '\0')
+	if (!s1)
+		return (NULL);
+	s_len = ft_strlen(s1);
+	start = 0;
+	end = s_len - 1;
+	while (start < s_len && ft_strchr(set, s1[start]))
+		start++;
+	while (end > 0 && ft_strchr(set, s1[end]))
+		end--;
+	if (start > end)
 	{
-		trim = ft_strchr(set, s1[src_len]);
-		if (!trim)
-			dstsize++;
-		src_len++;
+		trim_str = (char *)malloc(1);
+		*trim_str = 0;
 	}
-	dst = (char *)malloc(sizeof(char) * (dstsize + 1));
-	if (!dst)
-		return (0);
-	dst[dstsize] = '\0';
-	while (--src_len > -1)
-	{
-		trim = ft_strchr(set, s1[src_len]);
-		if (!trim)
-			dst[--dstsize] = s1[src_len];
-	}
-	return (dst);
+	else
+		trim_str = ft_substr(s1, start, end - start + 1);
+	return (trim_str);
 }

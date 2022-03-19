@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 18:50:38 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/11 16:11:59 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:11:18 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char		*tmp;
-	const char	*s;
+	unsigned char		*tmp;
+	const unsigned char	*s;
 
 	tmp = dst;
 	s = src;
