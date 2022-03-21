@@ -6,7 +6,7 @@
 #    By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 11:57:30 by hehwang           #+#    #+#              #
-#    Updated: 2022/03/21 12:59:53 by hehwang          ###   ########.fr        #
+#    Updated: 2022/03/21 13:13:40 by hehwang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCS = ft_isalpha.c\
 	   ft_putstr_fd.c\
 	   ft_putnbr_fd.c\
 	   ft_itoa.c
-BONUS = ft_lstnew.c\
+BONUS_SRCS = ft_lstnew.c\
 		ft_lstdelone.c\
 		ft_lstclear.c\
 		ft_lstadd_front.c\
@@ -56,7 +56,7 @@ BONUS = ft_lstnew.c\
 		ft_lstmap.c\
 		ft_lstlast.c
 OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -68,7 +68,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
-	@make "SRCS = $(BONUS)" all
+	@make "SRCS = $(BONUS_SRCS)" all
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
