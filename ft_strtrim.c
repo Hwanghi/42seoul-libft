@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:08:17 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/17 18:45:29 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/20 16:00:41 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	s_len;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
+	if (*set == '\0')
+		return ((char *)s1);
 	s_len = ft_strlen(s1);
 	start = 0;
 	end = s_len - 1;

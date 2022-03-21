@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:22:25 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/19 19:39:15 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/21 12:24:08 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s != '\0')
 		write(fd, s++, 1);
 }
-
