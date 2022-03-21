@@ -6,7 +6,7 @@
 #    By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 11:57:30 by hehwang           #+#    #+#              #
-#    Updated: 2022/03/21 13:13:40 by hehwang          ###   ########.fr        #
+#    Updated: 2022/03/21 22:56:40 by hehwang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ ARFLAGS = rcs
 SRCS = ft_isalpha.c\
 	   ft_isalnum.c\
 	   ft_memcpy.c\
+	   ft_memcmp.c\
 	   ft_strjoin.c\
 	   ft_strrchr.c\
 	   ft_isascii.c\
@@ -38,6 +39,8 @@ SRCS = ft_isalpha.c\
 	   ft_memchr.c\
 	   ft_strchr.c\
 	   ft_strncmp.c\
+	   ft_strnstr.c\
+	   ft_strdup.c\
 	   ft_toupper.c\
 	   ft_strmapi.c\
 	   ft_striteri.c\
