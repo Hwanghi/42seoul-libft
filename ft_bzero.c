@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 18:38:20 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/14 10:36:35 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/21 22:07:27 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
+	unsigned char	*b;
 
-	str = (char *)s;
+	b = (unsigned char *)s;
 	while (n--)
-		*str++ = 0;
+		*b++ = 0;
 }
