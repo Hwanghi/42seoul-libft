@@ -6,36 +6,44 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:22:11 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/21 22:50:43 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/22 17:41:50 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	free_all(t_list *lst)
+{
+	t_list	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_list;
-	t_list	*last_node;
-	void	*content;
+	t_list	*new_node;
 
-	if (!lst || !f || !del)
+	if (!lst || !f)
 		return (NULL);
-	content = f(lst->content);
-	new_list = ft_lstnew(content);
-	if (!new_list)
-		return (NULL);
-	last_node = new_list;
-	lst = lst->next;
+	new_list = NULL;
 	while (lst != NULL)
 	{
-		content = f(lst->content);
-		last_node->next = ft_lstnew(content);
-		if (!last_node->next)
+		new_node = ft_lstnew(f(lst->content));
+		ft_lstadd_back(&new_list, new_node);
+		if (!new_node)
 		{
-			ft_lstclear(&new_list, del);
+			if (!del)
+				free_all(new_list);
+			else
+				ft_lstclear(&new_list, del);
 			return (NULL);
 		}
-		last_node = last_node->next;
 		lst = lst->next;
 	}
 	return (new_list);
