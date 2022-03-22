@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:47:33 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/21 22:20:45 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/22 19:07:09 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	print_nbrs(int n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	if (fd < 0)
+		return ;
 	if (n == -2147483648)
 	{
 		ft_putstr_fd("-2147483648", fd);

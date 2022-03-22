@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 13:37:10 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/15 16:51:35 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/22 21:08:36 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,39 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
+static long	calc_number(const char *str, size_t nbr_len, int sign)
+{
+	size_t	i;
+	long	num;
+
+	i = 0;
+	if (nbr_len >= 18)
+	{
+		while (i < nbr_len)
+		{
+			if (sign == 1)
+				if ("923372036854775807"[i] < str[i])
+					return (-1);
+			if (sign == -1)
+				if ("923372036854775808"[i] < str[i])
+					return (0);
+			i++;
+		}
+	}
+	num = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num *= 10;
+		num += str[i] - '0';
+		i++;
+	}
+	return (sign * num);
+}
+
 int	ft_atoi(const char *str)
 {
-	int				sign;
-	unsigned int	num;
+	int		sign;
+	size_t	nbr_len;
 
 	sign = 1;
 	while (ft_isspace(*str))
@@ -34,12 +63,8 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	num = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		num *= 10;
-		num += *str - '0';
-		str++;
-	}
-	return ((int)(sign * num));
+	nbr_len = 0;
+	while (str[nbr_len] >= '0' && str[nbr_len] <= '9')
+		nbr_len++;
+	return ((int)calc_number(str, nbr_len, sign));
 }

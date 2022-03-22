@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:49:26 by hehwang           #+#    #+#             */
-/*   Updated: 2022/03/15 19:08:49 by hehwang          ###   ########.fr       */
+/*   Updated: 2022/03/22 20:00:54 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len1;
-	size_t	len2;
 	char	*dst;
+	size_t	dstsize;
+	size_t	i;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	dst = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!s1 || !s2)
+		return (NULL);
+	dstsize = ft_strlen(s1) + ft_strlen(s2) + 1;
+	dst = (char *)malloc(sizeof(char) * (dstsize));
 	if (!dst)
-		return (0);
-	(void)ft_strlcpy(dst, s1, len1 + 1);
-	(void)ft_strlcat(dst, s2, len1 + len2 + 1);
+		return (NULL);
+	i = 0;
+	while (*s1 != '\0')
+		dst[i++] = *s1++;
+	while (*s2 != '\0')
+		dst[i++] = *s2++;
+	dst[i] = '\0';
 	return (dst);
 }
