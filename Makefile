@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.
 AR = ar
 ARFLAGS = rcs
-SRCS = ft_isalpha.c\
+SRCS_O = ft_isalpha.c\
 	   ft_isalnum.c\
 	   ft_memcpy.c\
 	   ft_strjoin.c\
@@ -46,7 +46,7 @@ SRCS = ft_isalpha.c\
 	   ft_putstr_fd.c\
 	   ft_putnbr_fd.c\
 	   ft_itoa.c
-BONUS_SRCS = ft_lstnew.c\
+SRCS_B = ft_lstnew.c\
 		ft_lstdelone.c\
 		ft_lstclear.c\
 		ft_lstadd_front.c\
@@ -55,8 +55,14 @@ BONUS_SRCS = ft_lstnew.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
 		ft_lstlast.c
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS_O = $(SRCS_O:.c=.o)
+OBJS_B = $(SRCS_B:.c=.o)
+
+ifdef WITH_BONUS
+	OBJS = $(OBJS_O) $(OBJS_B)
+else
+	OBJS = $(OBJS_O)
+endif
 
 all: $(NAME)
 
@@ -68,10 +74,10 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
-	@make "SRCS = $(BONUS_SRCS)" all
+	make WITH_BONUS=1 all
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS_O) $(OBJS_B)
 
 fclean: clean
 	rm -f $(NAME)
