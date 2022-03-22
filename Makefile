@@ -6,7 +6,7 @@
 #    By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 11:57:30 by hehwang           #+#    #+#              #
-#    Updated: 2022/03/21 22:56:40 by hehwang          ###   ########.fr        #
+#    Updated: 2022/03/22 21:26:16 by hehwang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.
 AR = ar
 ARFLAGS = rcs
-SRCS_O = ft_isalpha.c\
+SRCS = ft_isalpha.c\
 	   ft_isalnum.c\
 	   ft_memcpy.c\
 	   ft_memcmp.c\
@@ -58,14 +58,8 @@ SRCS_B = ft_lstnew.c\
 		ft_lstiter.c\
 		ft_lstmap.c\
 		ft_lstlast.c
-OBJS_O = $(SRCS_O:.c=.o)
+OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
-
-ifdef WITH_BONUS
-	OBJS = $(OBJS_O) $(OBJS_B)
-else
-	OBJS = $(OBJS_O)
-endif
 
 all: $(NAME)
 
@@ -77,10 +71,10 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
-	make WITH_BONUS=1 all
+	make "OBJS = $(OBJS) $(OBJS_B)" all
 
 clean:
-	rm -f $(OBJS_O) $(OBJS_B)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 	rm -f $(NAME)
